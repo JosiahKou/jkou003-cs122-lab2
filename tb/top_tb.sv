@@ -2,16 +2,13 @@
 `default_nettype none
 
 module top_tb;
-logic clk;
+logic [3:0] bcd;
+logic [6:0] seg7;
 
-top 
-(
-    .clk(clk)
-    /** add additional signals */
+top uut (
+    .bcd(bcd),
+    .seg7(seg7)
 );
-
-localparam CLK_PERIOD = /** clk period */;
-always #(CLK_PERIOD/2) clk=~clk;
 
 initial begin
     $dumpfile("build/top.vcd");
@@ -19,9 +16,11 @@ initial begin
 end
 
 initial begin
-    clk<=1'b1;
-    #(CLK_PERIOD*3);
-    // testbench logic goes below
+    for (int i = 0; i < 16; i++) begin
+        bcd = i;
+        #10;
+    end
+    #10;
     $finish;
 end
 

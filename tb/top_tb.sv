@@ -1,11 +1,11 @@
 `include "src/top.sv"
-`default_nettype none
 
 module top_tb;
 logic [3:0] bcd;
 logic [6:0] seg7;
 
-top uut (
+top uut 
+(
     .bcd(bcd),
     .seg7(seg7)
 );
@@ -25,4 +25,3 @@ initial begin
 end
 
 endmodule
-`default_nettype wire

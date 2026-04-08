@@ -2,8 +2,8 @@
 
 top_tb.sim: tb/top_tb.sv src/top.sv src/decoder.sv src/adder.sv
 	mkdir -p build
-	iverilog -g2012 -o build/\$@ \$^
-	vvp build/\$@
+	iverilog -g2012 -o build/$@ $^
+	vvp build/$@
 	gtkwave build/top.vcd &
 
 top.bin: src/top.sv src/decoder.sv src/adder.sv top.pcf

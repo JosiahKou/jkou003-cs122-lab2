@@ -1,4 +1,3 @@
-cat > src/adder.sv << 'EOF'
 module adder (
     input wire [3:0] val1,
     input wire [3:0] val2,
@@ -10,4 +9,3 @@ always_comb begin
 end
 
 endmodule
-EOF

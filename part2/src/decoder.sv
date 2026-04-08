@@ -1,4 +1,5 @@
-module seven_segment_decoder (
+cat > src/decoder.sv << 'EOF'
+module decoder (
     input wire [3:0] bcd,
     output logic [6:0] seg7
 );
@@ -26,3 +27,4 @@ always_comb begin
 end
 
 endmodule
+EOF

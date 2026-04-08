@@ -1,21 +1,22 @@
 module top_tb;
-logic [3:0] bcd;
-logic [6:0] seg7;
+reg [3:0] val1, val2;
+wire [7:0] seg7;
 
-top uut (.bcd(bcd), .seg7(seg7));
+top uut(val1, val2, seg7);
 
 initial begin
     $dumpfile("build/top.vcd");
     $dumpvars(0, top_tb);
     
-    $display("Testing 7-segment decoder:");
-    $display("bcd -> seg7");
+    $display("val1 val2 sum seg7 DP");
+    val1=5; val2=3; #10;
+    $display(" %2d   %2d   %2d   %b   %b", val1, val2, val1+val2, seg7[6:0], seg7[7]);
     
-    for (int i = 0; i < 16; i++) begin
-        bcd = i;
-        #10;
-        $display("%d -> %b", bcd, seg7);
-    end
+    val1=9; val2=9; #10;
+    $display(" %2d   %2d   %2d   %b   %b", val1, val2, val1+val2, seg7[6:0], seg7[7]);
+    
+    val1=15; val2=1; #10;
+    $display(" %2d   %2d   %2d   %b   %b", val1, val2, val1+val2, seg7[6:0], seg7[7]);
     
     $finish;
 end

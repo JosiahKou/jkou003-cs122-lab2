@@ -1,16 +1,17 @@
 .PHONY: clean
 
-%.sim: tb/%_tb.sv #src/*.sv
+%.sim: tb/%_tb.sv
 	mkdir -p build
 	iverilog -g2012 -o build/$@ $<
 	vvp build/$@
 	gtkwave build/$*.vcd
 
-%.bit: src/%.sv
+# For ICESugar (non-pro)
+%.bin: src/%.sv top.pcf
 	mkdir -p build
-	yosys -p "synth_ecp5 -json build/$*.json" $^
-	nextpnr-ecp5 --25k --package CABGA256 --speed 6 --json build/$*.json --textcfg build/$*.cfg --lpf $*.lpf --freq 65
-	ecppack --svf build/$*.svf build/$*.cfg build/$@
+	yosys -p "read_verilog -sv $<; synth_ice40 -top $* -json build/$*.json"
+	nextpnr-ice40 --up5k --package sg48 --json build/$*.json --pcf top.pcf --asc build/$*.asc --freq 12
+	icepack build/$*.asc build/$*.bin
 
 clean:
 	rm -rf build

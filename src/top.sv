@@ -7,7 +7,6 @@ module top (
 wire [4:0] sum;
 assign sum = val1 + val2;
 
-// Reuse your existing decoder logic for lower 4 bits
 always_comb begin
     case (sum[3:0])
         4'd0: seg7[6:0] = 7'b1111110;

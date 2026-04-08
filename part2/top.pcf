@@ -1,8 +1,14 @@
-# 4 inputs for BCD value
-set_io bcd[0] 25
-set_io bcd[1] 27
-set_io bcd[2] 31
-set_io bcd[3] 34
+# 4 inputs for val1 value
+set_io val1[0] 25
+set_io val1[1] 27
+set_io val1[2] 31
+set_io val1[3] 34
+
+# 4 inputs for val2 value
+set_io val2[0] 45
+set_io val2[1] 43
+set_io val2[2] 38
+set_io val1[3] 36
 
 # 7 outputs for 7-segment display
 set_io seg7[6] 3

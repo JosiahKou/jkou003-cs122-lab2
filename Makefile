@@ -1,12 +1,11 @@
 .PHONY: clean
 
-%.sim: tb/%_tb.sv
+top_tb.sim: tb/top_tb.sv src/top.sv
 	mkdir -p build
-	iverilog -g2012 -o build/$@ $<
+	iverilog -g2012 -o build/$@ $^
 	vvp build/$@
-	gtkwave build/$*.vcd
+	gtkwave build/top.vcd
 
-# For ICESugar (non-pro)
 %.bin: src/%.sv top.pcf
 	mkdir -p build
 	yosys -p "read_verilog -sv $<; synth_ice40 -top $* -json build/$*.json"

@@ -3,26 +3,29 @@ module top (
     output logic [6:0] seg7
 );
 
-always_comb begin
-    case (bcd)
-        4'd0: seg7 = 7'b1111110;
-        4'd1: seg7 = 7'b0110000;
-        4'd2: seg7 = 7'b1101101;
-        4'd3: seg7 = 7'b1111001;
-        4'd4: seg7 = 7'b0110011;
-        4'd5: seg7 = 7'b1011011;
-        4'd6: seg7 = 7'b1011111;
-        4'd7: seg7 = 7'b1110000;
-        4'd8: seg7 = 7'b1111111;
-        4'd9: seg7 = 7'b1111011;
-        4'd10: seg7 = 7'b1110111;
-        4'd11: seg7 = 7'b0011111;
-        4'd12: seg7 = 7'b1001110;
-        4'd13: seg7 = 7'b0111101;
-        4'd14: seg7 = 7'b1001111;
-        4'd15: seg7 = 7'b1000111;
-        default: seg7 = 7'b0000000;
-    endcase
-end
+/** Logic */
+wire a;
+wire b;
+wire c;
+wire d;
+wire e;
+wire f;
+wire g;
+
+assign a = bcd == 4'b0 || bcd == 4'b0010 || bcd == 4'b0011 || bcd == 4'b0101 || bcd == 4'b0110 || bcd == 4'b0111 || bcd == 4'b1000 || bcd == 4'b1001 || bcd == 4'b1010 || bcd == 4'b1100 || bcd == 4'b1110 || bcd == 4'b1111;
+assign b = bcd == 4'b0 || bcd == 4'b0001 || bcd == 4'b0010 || bcd == 4'b0011 || bcd == 4'b0100 || bcd == 4'b0111 || bcd == 4'b1000 || bcd == 4'b1001 || bcd == 4'b1010 || bcd == 4'b1101 || bcd == 4'b0011;
+assign c = bcd == 4'b0 || bcd == 4'b0001 || bcd == 4'b0011 || bcd == 4'b0100 || bcd == 4'b0101 || bcd == 4'b0110 || bcd == 4'b0111 || bcd == 4'b1000 || bcd == 4'b1001 || bcd == 4'b1010 || bcd == 4'b1011 || bcd == 4'b1101;
+assign d = bcd == 4'b0 || bcd == 4'b0010 || bcd == 4'b0011 || bcd == 4'b0101 || bcd == 4'b0110 || bcd == 4'b1000 || bcd == 4'b1001 || bcd == 4'b1011 || bcd == 4'b1100 || bcd == 4'b1101 || bcd == 4'b1110;
+assign e = bcd == 4'b0 || bcd == 4'b0010 || bcd == 4'b0110 || bcd == 4'b1000 || bcd == 4'b1010 || bcd == 4'b1011 || bcd == 4'b1100 || bcd == 4'b1101 || bcd == 4'b1110 || bcd == 4'b1111;
+assign f = bcd == 4'b0 || bcd == 4'b0100 || bcd == 4'b0101 || bcd == 4'b0110 || bcd == 4'b1000 || bcd == 4'b1001 || bcd == 4'b1010 || bcd == 4'b1011 || bcd == 4'b1100 || bcd == 4'b1110 || bcd == 4'b1111;
+assign g = bcd == 4'b0010 || bcd == 4'b0011 || bcd == 4'b0100 || bcd == 4'b0101 || bcd == 4'b0110 || bcd == 4'b1000 || bcd == 4'b1001 || bcd == 4'b1010 || bcd == 4'b1011 || bcd == 4'b1101 || bcd == 4'b1110 || bcd == 4'b1111;
+
+assign seg7[6] = g;
+assign seg7[5] = f;
+assign seg7[4] = e;
+assign seg7[3] = d;
+assign seg7[2] = c;
+assign seg7[1] = b;
+assign seg7[0] = a;
 
 endmodule

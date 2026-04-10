@@ -1,21 +1,19 @@
-# 4 inputs for val1 value
 set_io val1[0] 25
 set_io val1[1] 27
 set_io val1[2] 31
 set_io val1[3] 34
 
-# 4 inputs for val2 value
 set_io val2[0] 45
 set_io val2[1] 43
 set_io val2[2] 38
 set_io val2[3] 36
 
-# 8 outputs for 7-segment display (including decimal point)
-set_io seg7[0] 47
-set_io seg7[1] 23
-set_io seg7[2] 26
-set_io seg7[3] 28
-set_io seg7[4] 32
-set_io seg7[5] 2
-set_io seg7[6] 3
-set_io seg7[7] 4
+set_io seg7[6] 32
+set_io seg7[5] 28
+set_io seg7[4] 47
+set_io seg7[3] 44
+set_io seg7[2] 42
+set_io seg7[1] 26
+set_io seg7[0] 23
+set_io seg7[7] 2
+

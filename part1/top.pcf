@@ -4,11 +4,10 @@ set_io bcd[1] 27
 set_io bcd[2] 31
 set_io bcd[3] 34
 
-# 7 outputs for 7-segment display
-set_io seg7[6] 3
-set_io seg7[5] 2
-set_io seg7[4] 32
-set_io seg7[3] 28
-set_io seg7[2] 26
-set_io seg7[1] 23
-set_io seg7[0] 47
+set_io seg7[6] 32
+set_io seg7[5] 28
+set_io seg7[4] 47
+set_io seg7[3] 44
+set_io seg7[2] 42
+set_io seg7[1] 26
+set_io seg7[0] 23
